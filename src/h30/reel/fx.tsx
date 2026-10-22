@@ -14,7 +14,7 @@ import { body, clamp, colors, display, easeInOut, easeOut } from "../brand";
 /* ---------- Texturas ---------- */
 
 export const Texture: React.FC<{
-  name: "concreto" | "papel" | "madera";
+  name: "concreto" | "papel" | "madera" | "manual-gris" | "manual-negro" | "manual-blanco" | "manual-naranja" | "manual-revoque";
   shade?: number;
   drift?: boolean;
 }> = ({ name, shade = 0.35, drift = true }) => {
