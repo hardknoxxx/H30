@@ -1,6 +1,6 @@
 import React from "react";
 import { Audio } from "@remotion/media";
-import { AbsoluteFill, Sequence, staticFile } from "remotion";
+import { AbsoluteFill, interpolate, Sequence, staticFile } from "remotion";
 import { colors } from "../brand";
 import { TearWipe } from "./fx";
 import {
@@ -61,6 +61,37 @@ export const H30Reel: React.FC = () => (
       <TearWipe kind="naranja" />
     </Sequence>
 
-    <Audio src={staticFile("voz/voz-franquiciado.mp3")} />
+    <Audio src={staticFile("voz/voz-franquiciado.mp3")} volume={0.75} />
+    {/* Música original (scripts/musica.py): baja mientras habla la voz y sube al terminar. */}
+    <Audio
+      src={staticFile("musica/fondo.mp3")}
+      volume={(f) =>
+        interpolate(f, [0, 4, at(45.6), at(46.2)], [0.38, 0.105, 0.105, 0.34], {
+          extrapolateLeft: "clamp",
+          extrapolateRight: "clamp",
+        })
+      }
+    />
+
+    {/* Efectos (Pixabay, uso libre): golpes en los sellos, whoosh en los cortes, pop en los rubros. */}
+    <Sequence name="Golpe logo" from={at(0.18)} layout="none">
+      <Audio src={staticFile("sfx/impact-bass-1.mp3")} volume={0.25} />
+    </Sequence>
+    <Sequence name="Golpe autoservicio" from={at(8.28)} layout="none">
+      <Audio src={staticFile("sfx/impact-bass-1.mp3")} volume={0.19} />
+    </Sequence>
+    <Sequence name="Golpe solución" from={at(31.58)} layout="none">
+      <Audio src={staticFile("sfx/impact-bass-1.mp3")} volume={0.22} />
+    </Sequence>
+    {[6.5, 12.5, 17.9, 28.9, 32.2].map((t) => (
+      <Sequence key={t} name="Whoosh corte" from={at(t) - WIPE / 2} layout="none">
+        <Audio src={staticFile("sfx/whoosh-short.mp3")} volume={0.22} />
+      </Sequence>
+    ))}
+    {[19.76, 20.6, 21.44, 22.22, 23.2, 24.18, 25.02, 26.1, 27.1].map((t) => (
+      <Sequence key={t} name="Pop rubro" from={at(t)} layout="none">
+        <Audio src={staticFile("sfx/pop.mp3")} volume={0.14} />
+      </Sequence>
+    ))}
   </AbsoluteFill>
 );
