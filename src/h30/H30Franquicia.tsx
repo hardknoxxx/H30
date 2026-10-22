@@ -3,7 +3,6 @@ import { linearTiming, springTiming, TransitionSeries } from "@remotion/transiti
 import { fade } from "@remotion/transitions/fade";
 import { slide } from "@remotion/transitions/slide";
 import { wipe } from "@remotion/transitions/wipe";
-import { clockWipe } from "@remotion/transitions/clock-wipe";
 import { AbsoluteFill } from "remotion";
 import { colors } from "./brand";
 import {
@@ -52,7 +51,7 @@ export const H30Franquicia: React.FC = () => (
         <Slogan />
       </TransitionSeries.Sequence>
       <TransitionSeries.Transition
-        presentation={clockWipe({ width: 1920, height: 1080 })}
+        presentation={fade()}
         timing={linearTiming({ durationInFrames: 30 })}
       />
       <TransitionSeries.Sequence name="Cierre" durationInFrames={160}>
