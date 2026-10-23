@@ -8,6 +8,3 @@ import { Config } from "@remotion/cli/config";
 Config.setRspack(true);
 Config.setVideoImageFormat("jpeg");
 Config.setOverwriteOutput(true);
-// WebGL para 3D (@remotion/three) y efectos. "swangle" es por software y funciona en cualquier máquina,
-// incluida la nube sin GPU; en una PC con placa de video podés cambiarlo a "angle" para renderizar más rápido.
-Config.setChromiumOpenGlRenderer("swangle");

@@ -4,32 +4,12 @@ import { Logo } from "./HelloWorld/Logo";
 import { Title } from "./HelloWorld/Title";
 import { H30Franquicia, H30_DURATION } from "./h30/H30Franquicia";
 import { H30Reel, H30_REEL_DURATION } from "./h30/reel/H30Reel";
-import { PausaPromo, PAUSA_DURATION } from "./promo/PausaPromo";
-import { KeynoteDemo, KEYNOTE_DURATION } from "./promo/KeynoteDemo";
 
 // Each <Composition> is an entry in the sidebar!
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
-      <Folder name="Motion">
-        <Composition
-          id="PausaPromo"
-          component={PausaPromo}
-          durationInFrames={PAUSA_DURATION}
-          fps={30}
-          width={1920}
-          height={1080}
-        />
-        <Composition
-          id="KeynoteDemo"
-          component={KeynoteDemo}
-          durationInFrames={KEYNOTE_DURATION}
-          fps={30}
-          width={1920}
-          height={1080}
-        />
-      </Folder>
       <Composition
         id="H30Reel"
         component={H30Reel}
