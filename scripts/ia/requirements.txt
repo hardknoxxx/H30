@@ -1,0 +1,4 @@
+# Herramientas de IA gratuitas y locales: pip install -r scripts/ia/requirements.txt
+piper-tts
+faster-whisper
+rembg[cpu]

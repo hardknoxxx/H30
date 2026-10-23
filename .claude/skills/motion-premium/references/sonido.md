@@ -32,3 +32,14 @@ ElevenLabs, que los genera a medida.
 - Sin voz: música a 0,9 y efectos por encima. Con voz: voz normalizada a −16 LUFS
   (`ffmpeg -af loudnorm=I=-16:TP=-1.5`), música a ~0,15 mientras habla y subida al final.
 - Master final a −14 LUFS con `scripts/render-master.sh` (pico ≤ −1 dB).
+
+## Alternativas gratis (sin créditos) — `scripts/ia/`
+Instalar con `pip install -r scripts/ia/requirements.txt` (los modelos se bajan solos la primera vez).
+- **Voz**: `scripts/ia/voz-gratis.sh "texto" salida.wav [velocidad]` → Piper, voz argentina "daniela"
+  (dataset CC BY-SA 4.0: uso comercial con atribución). Más robótica que ElevenLabs, pero gratis e ilimitada.
+- **Tiempos por palabra**: `python3 scripts/ia/transcribir.py voz.mp3` → Whisper local; reemplaza la
+  transcripción de ElevenLabs para sincronizar animaciones.
+- **Recortar fondos**: `python3 scripts/ia/quitar-fondo.py foto.jpg recorte.png` → rembg (~1 min por foto en CPU).
+- **Imágenes**: `scripts/ia/imagen-gratis.sh "prompt en inglés" salida.jpg` → Pollinations; sin cuenta la
+  calidad es básica y lleva marca de agua; con token gratuito (`POLLINATIONS_TOKEN`) mejora.
+- **Video generado por IA**: no hay opción gratis que funcione sin placa de video; animar con Remotion.
